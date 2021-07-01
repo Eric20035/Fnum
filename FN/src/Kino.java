@@ -10,19 +10,7 @@ import java.io.IOException;
 public class Kino {
 
 
-
-
-
-
-
-
-
-
-
-
-
     public static void main(String[] args) throws IOException {
-
 
 
         String[][] plaetze = erzeugenSaal();
@@ -31,13 +19,36 @@ public class Kino {
 
         //abfragenIntArray2D(plaetze);
 
-        abfragenIntArray2D (plaetze);
+        abfragenIntArray2D(plaetze);
+        boolean stornieren = true;
+
+
+
+        do {
+
+            stoneymoney(plaetze);
+            System.out.println("Willst du Stornieren?");
+            stornieren = IO.readBoolean();
+
+        }
+        while(stornieren==true);
+
+
+
+
 
 
 
 
 
     }
+
+
+
+
+
+
+
 
     public static String[][] erzeugenSaal () throws IOException {
 
@@ -61,38 +72,22 @@ public class Kino {
 
             for (int j = 0; j < erzeugenSaal[i].length; j++) {
 
-
-
                 erzeugenSaal[i][j] = "O";
-
                 System.out.print( erzeugenSaal[i][j]+"\t");
-
             }
-
             System.out.println();
-
         }
-
-
-
         return erzeugenSaal;
-
     }
-
-
 
     public static void printIntArray2d (String[][]erzeugenSaal){
 
         for (int i = 0; i < erzeugenSaal.length; i++) {
 
             for (int j = 0; j < erzeugenSaal[i].length; j++) {
-
                 System.out.print(erzeugenSaal[i][j] + "\t");
-
             }
-
             System.out.println("");
-
         }
 
     }
@@ -110,11 +105,27 @@ public class Kino {
         erzeugenSaal[k][f]="X";
 
 
+        for (int i = 0; i < erzeugenSaal.length; i++) {
 
+            for (int j = 0; j < erzeugenSaal[i].length; j++) {
 
+                System.out.print(erzeugenSaal[i][j] + "\t");
+            }
+            System.out.println("");
+        }
+    }
 
+    public static void stoneymoney (String[][]erzeugenSaal) throws IOException {
 
+        System.out.println("In welcher Reihe soll der Platz storniert werden?");
 
+        int k = IO.readInteger()-1;
+
+        System.out.println("Welcher Platz soll storniert werden?");
+
+        int f = IO.readInteger()-1;
+
+        erzeugenSaal[k][f]="O";
 
 
         for (int i = 0; i < erzeugenSaal.length; i++) {
@@ -122,22 +133,9 @@ public class Kino {
             for (int j = 0; j < erzeugenSaal[i].length; j++) {
 
                 System.out.print(erzeugenSaal[i][j] + "\t");
-
             }
-
             System.out.println("");
-
         }
-
-
-
-
-
-
-
     }
-
-
-
 }
 
